@@ -4,17 +4,87 @@
     <meta charset="UTF-8">
     <title>트레이너 프로필</title>
     <style>
-        body { margin: 0; background: #121212; color: #fff; font-family: 'Apple SD Gothic Neo', sans-serif; padding: 20px; }
-        .container { max-width: 400px; margin: 40px auto; background: #1e1e1e; border-radius: 16px; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); text-align: center; }
-        .menu-icon { position: fixed; top: 20px; right: 20px; font-size: 24px; cursor: pointer; z-index: 100; background: #222; padding: 12px 15px; border-radius: 50%; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-        .menu-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99; flex-direction: column; justify-content: center; align-items: center; overflow-y: auto; }
-        .menu-overlay a { color: #fff; font-size: 20px; text-decoration: none; margin: 15px 0; font-weight: bold; }
+        body { 
+            margin: 0; 
+            background: #121212; 
+            color: #fff; 
+            font-family: 'Apple SD Gothic Neo', sans-serif; 
+            height: 100vh;
+            overflow: hidden; /* 전체 페이지 스크롤 방지 */
+        }
+        
+        .container { 
+            max-width: 400px; 
+            height: 100vh;
+            margin: 0 auto; 
+            background: #1e1e1e; 
+            padding: 30px; 
+            box-sizing: border-box;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center; 
+            position: relative;
+        }
+
+        /* 각 섹션 기본은 숨김, active 클래스가 붙은 섹션만 화면에 표시 */
+        .page-section {
+            display: none;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto; /* 내용이 넘칠 경우 내부 스크롤 허용 */
+        }
+        .page-section.active {
+            display: flex;
+        }
+
+        .menu-icon { 
+            position: fixed; 
+            top: 20px; 
+            right: 20px; 
+            font-size: 24px; 
+            cursor: pointer; 
+            z-index: 100; 
+            background: #222; 
+            padding: 12px 15px; 
+            border-radius: 50%; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3); 
+        }
+
+        .menu-overlay { 
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0,0,0,0.95); 
+            z-index: 99; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+        }
+
+        .menu-overlay a { 
+            color: #fff; 
+            font-size: 20px; 
+            text-decoration: none; 
+            margin: 15px 0; 
+            font-weight: bold; 
+            cursor: pointer;
+        }
         .menu-overlay a:hover { color: #ff5722; }
+
         h1 { color: #ff5722; font-size: 24px; margin-bottom: 10px; }
-        h2 { color: #ff5722; font-size: 20px; margin-top: 40px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        h2 { color: #ff5722; font-size: 20px; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 10px; width: 100%; text-align: center; }
         p, li { color: #aaa; line-height: 1.6; text-align: left; }
-        ul { padding-left: 20px; }
-        .btn { display: block; background: #ff5722; color: white; padding: 14px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 15px; text-align: center; }
+        ul { padding-left: 20px; width: 100%; box-sizing: border-box; }
+        
+        .btn { display: block; background: #ff5722; color: white; padding: 14px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 15px; text-align: center; width: 100%; box-sizing: border-box; }
         .btn-insta { background: #E1306C; margin-top: 10px; }
     </style>
 </head>
@@ -26,19 +96,19 @@
     <!-- 메뉴를 열었을 때 나타나는 카테고리 목록 -->
     <div id="menuOverlay" class="menu-overlay">
         <div onclick="toggleMenu()" style="position: absolute; top: 20px; right: 20px; font-size: 32px; cursor: pointer; color: #fff;">✕</div>
-        <a href="#profile" onclick="toggleMenu()">👤 프로필 및 자격증</a>
-        <a href="#beforeafter" onclick="toggleMenu()">📸 비포 & 애프터</a>
-        <a href="#memories" onclick="toggleMenu()">✨ 회원님들과의 추억</a>
-        <a href="#pricing" onclick="toggleMenu()">💰 가격 안내</a>
-        <a href="#location" onclick="toggleMenu()">📍 위치 안내</a>
-        <a href="#consult" onclick="toggleMenu()">💬 상담 문의</a>
+        <a onclick="showPage('profile')">👤 프로필 및 자격증</a>
+        <a onclick="showPage('beforeafter')">📸 비포 & 애프터</a>
+        <a onclick="showPage('memories')">✨ 회원님들과의 추억</a>
+        <a onclick="showPage('pricing')">💰 가격 안내</a>
+        <a onclick="showPage('location')">📍 위치 안내</a>
+        <a onclick="showPage('consult')">💬 상담 문의</a>
     </div>
 
     <!-- 본문 내용 영역 -->
     <div class="container">
         
         <!-- 1. 프로필 카테고리 -->
-        <section id="profile" style="margin-bottom: 40px;">
+        <section id="profile" class="page-section active">
             <h1>김건강 트레이너</h1>
             <p style="text-align: center;">"단순한 다이어트가 아닌, 평생 유지할 수 있는 건강한 습관을 만들어 드립니다."</p>
             <h2 style="font-size: 18px; margin-top: 20px;">📜 자격 및 수상 경력</h2>
@@ -51,54 +121,71 @@
         </section>
 
         <!-- 2. 비포 & 애프터 카테고리 -->
-        <section id="beforeafter" style="margin-bottom: 40px;">
+        <section id="beforeafter" class="page-section">
             <h2>📸 비포 & 애프터</h2>
-            <p>회원님들의 놀라운 변화 과정입니다. (추후 사진을 업로드할 수 있습니다)</p>
-            <div style="background: #2a2a2a; padding: 20px; border-radius: 8px; margin-top: 10px; color: #777;">[비포 & 애프터 사진 영역]</div>
+            <p style="text-align: center;">회원님들의 놀라운 변화 과정입니다. (추후 사진을 업로드할 수 있습니다)</p>
+            <div style="background: #2a2a2a; padding: 40px 20px; border-radius: 8px; margin-top: 10px; color: #777; width: 100%; box-sizing: border-box; text-align: center;">[비포 & 애프터 사진 영역]</div>
         </section>
 
         <!-- 3. 회원님들과의 추억 카테고리 -->
-        <section id="memories" style="margin-bottom: 40px;">
+        <section id="memories" class="page-section">
             <h2>✨ 회원님들과의 추억</h2>
-            <p>열심히 운동하고 함께 바디프로필을 완성하며 웃고 울었던 소중한 순간들입니다.</p>
-            <div style="background: #2a2a2a; padding: 20px; border-radius: 8px; margin-top: 10px; color: #777;">[수업 스케치 및 추억 사진 영역]</div>
+            <p style="text-align: center;">열심히 운동하고 함께 바디프로필을 완성하며 웃고 울었던 소중한 순간들입니다.</p>
+            <div style="background: #2a2a2a; padding: 40px 20px; border-radius: 8px; margin-top: 10px; color: #777; width: 100%; box-sizing: border-box; text-align: center;">[수업 스케치 및 추억 사진 영역]</div>
         </section>
 
         <!-- 4. 가격 안내 카테고리 -->
-        <section id="pricing" style="margin-bottom: 40px;">
+        <section id="pricing" class="page-section">
             <h2>💰 가격 안내</h2>
-            <p><b>1:1 퍼스널 트레이닝 (PT)</b></p>
+            <p style="text-align: center; width: 100%;"><b>1:1 퍼스널 트레이닝 (PT)</b></p>
             <ul>
                 <li>10회 권: OOO만 원</li>
                 <li>20회 권: OOO만 원 (할인 적용)</li>
                 <li>30회 권: OOO만 원 (최대 할인)</li>
             </ul>
-            <p style="font-size: 13px; color: #666; margin-top: 5px;">* 식단 관리 및 개인 운동 루틴 제공 포함</p>
+            <p style="font-size: 13px; color: #666; margin-top: 15px; text-align: center; width: 100%;">* 식단 관리 및 개인 운동 루틴 제공 포함</p>
         </section>
 
         <!-- 5. 위치 안내 카테고리 -->
-        <section id="location" style="margin-bottom: 40px;">
+        <section id="location" class="page-section">
             <h2>📍 위치 안내</h2>
-            <p><b>OOO 피트니스 센터</b></p>
-            <p>• 서울시 강남구 OOO로 123, 지하 1층<br>• 주차 공간 완비 / 지하철역 도보 3분</p>
+            <p style="text-align: center; width: 100%;"><b>OOO 피트니스 센터</b></p>
+            <p style="text-align: center;">• 서울시 강남구 OOO로 123, 지하 1층<br>• 주차 공간 완비 / 지하철역 도보 3분</p>
         </section>
 
         <!-- 6. 상담 카테고리 -->
-        <section id="consult">
+        <section id="consult" class="page-section">
             <h2>💬 상담 문의</h2>
-            <p>궁금한 점이 있으시거나 PT 등록을 원하시면 편하게 연락 주세요!</p>
-            <!-- 카카오톡 오픈채팅 링크 (본인 링크로 수정하세요) -->
+            <p style="text-align: center;">궁금한 점이 있으시거나 PT 등록을 원하시면 편하게 연락 주세요!</p>
             <a href="https://open.kakao.com" target="_blank" class="btn">카카오톡 1:1 오픈채팅 상담</a>
-            <!-- 인스타그램 링크 (본인 계정 주소로 수정하세요) -->
             <a href="https://instagram.com" target="_blank" class="btn btn-insta">인스타그램 구경하기</a>
         </section>
 
     </div>
 
     <script>
+        // 햄버거 메뉴 열고 닫기
         function toggleMenu() {
             const overlay = document.getElementById('menuOverlay');
             overlay.style.display = overlay.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        // 메뉴를 눌렀을 때 해당 페이지만 보여주고 메뉴 닫기
+        function showPage(pageId) {
+            // 모든 섹션 숨기기
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // 선택한 섹션만 보이기
+            const targetSection = document.getElementById(pageId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            // 메뉴 닫기
+            toggleMenu();
         }
     </script>
 </body>
