@@ -386,13 +386,63 @@
 
         </div>
     </section>
-    <!-- 4. 회원님들 후기 -->
+<!-- 4. 회원님들 후기 -->
     <section class="content-section" id="reviews">
         <h2 class="section-title">회원님들 후기</h2>
-        <div class="placeholder-box">
-            카카오톡 후기 캡처 및 수기 후기가 들어갈 공간입니다.
+
+        <!-- 옆으로 드래그/스와이프 가능한 슬라이더 컨테이너 -->
+        <div class="review-scroll-container" style="
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 15px;
+            scrollbar-width: none; /* 파이어폭스 스크롤바 숨김 */
+        ">
+            <!-- 자바스크립트로 42장의 이미지가 여기에 자동으로 들어갑니다 -->
         </div>
     </section>
+
+    <!-- 스크롤바 숨김용 CSS 추가 스타일 -->
+    <style>
+        .review-scroll-container::-webkit-scrollbar {
+            display: none; /* 크롬, 사파리 등 스크롤바 숨김 */
+        }
+        .review-card {
+            flex: 0 0 82%; /* 화면에 카드가 약간 겹쳐 보이도록 설정해 다음 카드가 있음을 자연스럽게 암시 */
+            max-width: 320px;
+            scroll-snap-align: center;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background-color: #161616;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+        .review-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+    </style>
+
+    <!-- 42장 후기 이미지 자동 생성 스크립트 -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const container = document.querySelector('.review-scroll-container');
+            const totalReviews = 42; // 후기 사진 개수
+
+            if (container) {
+                for (let i = 1; i <= totalReviews; i++) {
+                    const card = document.createElement('div');
+                    card.className = 'review-card';
+                    card.innerHTML = `<img src="review${i}.jpg" alt="회원 후기 ${i}" loading="lazy">`;
+                    container.appendChild(card);
+                }
+            }
+        });
+    </script>
 <!-- 6. 가격 안내 -->
     <section class="content-section" id="pricing">
         <h2 class="section-title">가격 안내</h2>
