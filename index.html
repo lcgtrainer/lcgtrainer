@@ -214,7 +214,7 @@
 
         /* 카테고리 콘텐츠 섹션 공통 스타일 (간격 최적화) */
         .content-section {
-            padding: 50px 20px; /* 상하 여백을 80px -> 50px로 축소 */
+            padding: 50px 20px;
             border-bottom: 1px solid #222222;
         }
 
@@ -666,13 +666,16 @@
             }
         }
 
-        // 42장 후기 이미지 자동 생성 스크립트
+        // 후기 이미지 자동 생성 스크립트 (14, 25, 42번 제외)
         document.addEventListener("DOMContentLoaded", function () {
             const container = document.querySelector('.review-scroll-container');
             const totalReviews = 42;
+            const excludeReviews = [14, 25, 42]; // 제외할 후기 번호
 
             if (container) {
                 for (let i = 1; i <= totalReviews; i++) {
+                    if (excludeReviews.includes(i)) continue; // 제외 목록에 있으면 건너뜀
+
                     const card = document.createElement('div');
                     card.className = 'review-card';
                     card.innerHTML = `<img src="review${i}.jpg" alt="회원 후기 ${i}" loading="lazy">`;
