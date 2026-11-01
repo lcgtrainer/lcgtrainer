@@ -475,13 +475,38 @@
         </div>
     </section>
     <!-- 7. 위치 -->
+ <!-- 7. 위치 -->
     <section class="content-section" id="location">
         <h2 class="section-title">위치</h2>
-        <div class="placeholder-box">
-            센터 주소 및 카카오맵/네이버지도 링크가 들어갈 공간입니다.
-        </div>
+        
+        <!-- 제이짐 위치 카드 (네이버 지도 연동) -->
+        <a href="https://map.naver.com/v5/search/%EC%95%88%EC%82%B0%20%EC%A0%9C%EC%9D%B4%EC%A7%90" target="_blank" style="text-decoration: none; display: block;">
+            <div style="background-color: #161616; border: 1px solid #262626; border-radius: 12px; padding: 30px 20px; text-align: center; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.3);" onmouseover="this.style.borderColor='#03CF5D'" onmouseout="this.style.borderColor='#262626'">
+                
+                <!-- 위치 아이콘 (네이버 그린 포인트) -->
+                <div style="font-size: 36px; color: #03CF5D; margin-bottom: 12px;">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                
+                <h3 style="font-size: 18px; font-weight: 700; color: #ffffff; margin-bottom: 6px;">
+                    제이짐 (J-GYM) 안산점
+                </h3>
+                
+                <p style="font-size: 13.5px; color: #aaaaaa; margin-bottom: 6px;">
+                    경기도 안산시 상록구 사동 1569-2번지 4층
+                </p>
+                
+                <p style="font-size: 13px; color: #777777; margin-bottom: 20px;">
+                    클릭하시면 네이버 지도 및 길찾기로 연결됩니다.
+                </p>
+                
+                <!-- 버튼 디자인 (네이버 지도 느낌) -->
+                <span style="display: inline-flex; align-items: center; justify-content: center; background-color: #03CF5D; color: #ffffff; font-size: 13.5px; font-weight: 600; padding: 11px 22px; border-radius: 25px; transition: background 0.2s;">
+                    네이버 지도로 보기 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 11px; margin-left: 7px;"></i>
+                </span>
+            </div>
+        </a>
     </section>
-
     <!-- 8. 상담 신청 -->
     <section class="content-section" id="consult">
         <h2 class="section-title">상담 신청</h2>
