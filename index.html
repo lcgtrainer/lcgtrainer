@@ -303,12 +303,12 @@
         </div>
     </section>
 
-   <!-- 2. 소개글 및 경력 -->
+    <!-- 2. 소개글 및 경력 -->
     <section class="content-section" id="about">
         <h2 class="section-title">소개글 및 경력</h2>
         
-        <!-- 트레이너 마인드 및 철학 소개 -->
-        <div class="about-intro-box" style="margin-bottom: 40px;">
+        <!-- 트레이너 소개글 -->
+        <div class="about-intro-box" style="margin-bottom: 35px;">
             <p style="font-size: 16px; color: #e0e0e0; line-height: 1.8; word-break: keep-all; margin-bottom: 15px;">
                 안녕하세요. 회원님의 몸을 단순히 잠시 변화시키는 것이 아니라, <strong>스스로 바른 자세를 인지하고 평생 운동을 이어갈 수 있는 자산</strong>을 만들어 드리는 트레이너입니다.
             </p>
@@ -317,16 +317,21 @@
             </p>
         </div>
 
-        <!-- 대회 사진 영역 (이미지 파일명을에 맞춰 수정해 주세요) -->
-        <div class="about-image-container" style="width: 100%; border-radius: 12px; overflow: hidden; margin-bottom: 40px; border: 1px solid rgba(255,255,255,0.1);">
-            <img src="competition_photo.jpg" alt="대회 경력 사진" style="width: 100%; height: auto; display: block; object-fit: cover;">
+        <!-- 대회 사진 2장 나란히 배치 (파일명: competition_photo1.jpg / competition_photo2.jpg) -->
+        <div class="about-image-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; margin-bottom: 35px;">
+            <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background-color: #1a1a1a;">
+                <img src="competition_photo1.jpg" alt="대회 경력 사진 1" style="width: 100%; height: 100%; display: block; object-fit: cover;">
+            </div>
+            <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background-color: #1a1a1a;">
+                <img src="competition_photo2.jpg" alt="대회 경력 사진 2" style="width: 100%; height: 100%; display: block; object-fit: cover;">
+            </div>
         </div>
 
-        <!-- 경력 및 자격사항 그리드 -->
-        <div class="about-grid" style="display: grid; grid-template-columns: 1fr; gap: 30px;">
+        <!-- 경력 및 자격사항 카드 목록 -->
+        <div class="about-grid" style="display: grid; grid-template-columns: 1fr; gap: 20px;">
             
             <!-- 자격 및 교육 이수 -->
-            <div class="info-card" style="background-color: #161616; border: 1px solid #262626; border-radius: 12px; padding: 25px;">
+            <div class="info-card" style="background-color: #161616; border: 1px solid #262626; border-radius: 12px; padding: 22px;">
                 <h3 style="font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 15px; display: flex; align-items: center;">
                     <i class="fa-solid fa-certificate" style="margin-right: 8px; color: #d1d1d1;"></i> 자격 및 교육 이수
                 </h3>
@@ -340,7 +345,7 @@
             </div>
 
             <!-- 보디빌딩 대회 수상 경력 -->
-            <div class="info-card" style="background-color: #161616; border: 1px solid #262626; border-radius: 12px; padding: 25px;">
+            <div class="info-card" style="background-color: #161616; border: 1px solid #262626; border-radius: 12px; padding: 22px;">
                 <h3 style="font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 15px; display: flex; align-items: center;">
                     <i class="fa-solid fa-medal" style="margin-right: 8px; color: #d1d1d1;"></i> 보디빌딩 대회 수상 경력
                 </h3>
@@ -354,7 +359,7 @@
             </div>
 
             <!-- 트레이너 경력 -->
-            <div class="info-card" style="background-color: #161616; border: 1px solid #262626; border-radius: 12px; padding: 25px;">
+            <div class="info-card" style="background-color: #161616; border: 1px solid #262626; border-radius: 12px; padding: 22px;">
                 <h3 style="font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 15px; display: flex; align-items: center;">
                     <i class="fa-solid fa-briefcase" style="margin-right: 8px; color: #d1d1d1;"></i> 트레이너 경력
                 </h3>
@@ -368,6 +373,7 @@
 
         </div>
     </section>
+
     <!-- 3. 회원님들 비포애프터 -->
     <section class="content-section" id="before-after">
         <h2 class="section-title">회원님들 비포애프터</h2>
